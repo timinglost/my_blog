@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="account-heading">{{ current_user.username }}</h2>
+<p class="text-secondary">{{ current_user.email }}</p>
+<form action="#" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form_settings">
+        <p><span>{{ form.username.label }}</span>
+            {% if form.username.errors %}
+            {{ form.username }}
+        <p>
+            {% for error in form.username.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </p>
+        {% else %}
+        {{ form.username }}
+        {% endif %}
+        </p>
+        <p><span>{{ form.email.label }}</span>
+            {% if form.email.errors %}
+            {{ form.email }}
+        <p>
+            {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </p>
+        {% else %}
+        {{ form.email }}
+        {% endif %}
+        </p>
+        <p><span>{{ form.picture.label }}</span>
+            {% if form.picture.errors %}
+            {{ form.picture }}
+        <p>
+            {% for error in form.picture.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </p>
+        {% else %}
+        {{ form.picture }}
+        {% endif %}
+        </p>
+        {{ form.submit }}
+    </div>
+</form>
+{% endblock content %}
