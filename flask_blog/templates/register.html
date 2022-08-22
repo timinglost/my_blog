@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="#" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form_settings">
+        <p><span>{{ form.username.label }}</span>
+        {% if form.username.errors %}
+        {{ form.username }}
+                        <p>
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    {% else %}
+                        {{ form.username }}
+                    {% endif %}
+        </p>
+        <p><span>{{ form.email.label }}</span>
+        {% if form.email.errors %}
+        {{ form.email }}
+                        <p>
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    {% else %}
+                        {{ form.email }}
+                    {% endif %}
+        </p>
+        <p><span>{{ form.password.label }}</span>
+        {% if form.password.errors %}
+        {{ form.password }}
+                        <p>
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    {% else %}
+                        {{ form.password }}
+                    {% endif %}
+        </p>
+        <p><span>{{ form.confirm_password.label }}</span>
+        {% if form.confirm_password.errors %}
+        {{ form.confirm_password }}
+                        <p>
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    {% else %}
+                        {{ form.confirm_password }}
+                    {% endif %}
+        </p>
+        {{ form.submit }}
+    </div>
+</form>
+{% endblock content %}
