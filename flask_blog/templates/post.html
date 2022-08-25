@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>{{ post.title }}</h2>
+<p><a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></p>
+<span class="left"><img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+                        alt="example graphic"/></span>
+<p>{{ post.content }}</p>
+<h6>Опубликовано {{ post.date_posted.strftime('%A, %d %B %Y %I:%M %p') }}</h6>
+
+{% if post.author == current_user %}
+<div class="card-footer" style="font-size: 20px;"> {% if post.author == current_user %}<a
+        class="btn btn-secondary btn-sm mt-1 mb-1"
+        href="{{url_for('posts.update_post', post_id=post.id) }}">Обновить</a>
+    <button type="button" onclick="clickDelete()" class="btn btn-danger btn-sm m-1" data-toggle="modal"
+            data-target="#deleteModal">Удалить
+    </button>
+    <div id="delete"></div>
+
+</div>
+{% endif %}
+
+
+{% endif %}
+<script>
+function clickDelete() {
+    const d1 = '<p>Вы уверены?</p>';
+    const d2 = '<form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST"><input class="btn btn-danger" type="submit" value="Удалить"></form>';
+    const d3 = '<button onclick="clickClear()">Нет</button>';
+    var d = `${d1} ${d2} ${d3}`;
+    console.log(d);
+    document.getElementById("delete").innerHTML = d;
+};
+function clickClear() {
+     document.getElementById('delete').innerHTML = '';
+};
+</script>
+{% endblock content %}

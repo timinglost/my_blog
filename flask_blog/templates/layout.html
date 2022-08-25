@@ -326,6 +326,8 @@ table tr td
           <li class="selected"><a href="{{url_for('main.home') }}">Главная</a></li>
           {% if current_user.is_authenticated %}
           <li class="selected"><a href="{{url_for('users.account') }}">{{ current_user.username }}</a></li>
+          <li class="selected"><a href="{{url_for('posts.allpost') }}">Все посты</a></li>
+          <li class="selected"><a href="{{url_for('posts.new_post') }}">Новый пост</a></li>
           <li class="selected"><a href="{{url_for('users.logout') }}">Выйти</a></li>
           {% else %}
           <li class="selected"><a href="{{url_for('users.login') }}">Войти</a></li>
