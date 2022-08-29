@@ -15,21 +15,7 @@
                         {{ form.email }}
                     {% endif %}
         </p>
-        <p><span>{{ form.password.label }}</span>
-        {% if form.password.errors %}
-        {{ form.password }}
-                        <p>
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </p>
-                    {% else %}
-                        {{ form.password }}
-                    {% endif %}
-        </p>
         {{ form.submit }}
     </div>
 </form>
-Нужен аккаунт? <a href="{{ url_for('users.register') }}">Зарегистрируйтесь</a>
-<a href="{{ url_for('users.reset_request') }}">Forgot Password?</a>
 {% endblock content %}
