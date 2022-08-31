@@ -1,8 +1,17 @@
 {% extends "layout.html" %}
+{% block style %}
+<style>
+    .profile { border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid green;
+    box-shadow: 0 0 7px #666;}
+</style>
+{% endblock style %}
 {% block content %}
 <h2>{{ post.title }}</h2>
 <p><a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></p>
-<span class="left"><img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+<span class="left"><img class="profile" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
                         alt="example graphic"/></span>
 <p>{{ post.content }}</p>
 <h6>Опубликовано {{ post.date_posted.strftime('%A, %d %B %Y %I:%M %p') }}</h6>
