@@ -15,6 +15,17 @@
       color: #fff;
       font-family: 'Lato', sans-serif;}
 
+    .del {
+    background: red;
+    border-radius: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    }
+
+    .answer {
+    text-align: center;
+    }
+
 </style>
 {% endblock style %}
 {% block content %}
@@ -43,10 +54,12 @@
 {% endif %}
 <script>
 function clickDelete() {
+    const d0 = '<div class="del">';
     const d1 = '<p>Вы уверены?</p>';
-    const d2 = '<form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST"><input class="btn btn-danger" type="submit" value="Удалить"></form>';
-    const d3 = '<button onclick="clickClear()">Нет</button>';
-    var d = `${d1} ${d2} ${d3}`;
+    const d2 = '<div class="answer"><form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST"><input class="btn btn-danger" type="submit" value="Удалить"></form>';
+    const d3 = '<button onclick="clickClear()">Нет</button></div>';
+    const d4 = '</div>';
+    var d = `${d0} ${d1} ${d2} ${d3} ${d4}`;
     console.log(d);
     document.getElementById("delete").innerHTML = d;
 };
