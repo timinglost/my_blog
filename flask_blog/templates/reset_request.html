@@ -1,4 +1,15 @@
 {% extends "layout.html" %}
+{% block style %}
+<style>
+    .sub {
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    }
+</style>
+{% endblock style %}
 {% block content %}
 <form action="#" method="post">
     {{ form.hidden_tag() }}
@@ -15,7 +26,9 @@
                         {{ form.email }}
                     {% endif %}
         </p>
-        {{ form.submit }}
+        <div class="sub">
+            {{ form.submit }}
+        </div>
     </div>
 </form>
 {% endblock content %}
